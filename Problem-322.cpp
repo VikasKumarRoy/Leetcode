@@ -59,22 +59,6 @@ public:
 
 class Solution {
 public:
-    int getMinCoins(vector <int> coins, int ind, int amount, vector <vector <int>> &dp) {
-        if(amount < 0)
-            return INT_MAX;
-        if(amount == 0)
-            return 0;
-        if(dp[ind][amount] == -1) {
-            int x = INT_MAX;
-            for(int i = 0; i < coins.size(); i++) {
-                if(coins[i] <= amount)
-                    x = min(x, getMinCoins(coins, i, amount - coins[i], dp));
-            }
-            dp[ind][amount] = x == INT_MAX ? INT_MAX : x + 1;
-        }
-        return dp[ind][amount];
-    }
-    
     
     int coinChange(vector<int>& coins, int amount) {
         if(coins.size() == 0)
