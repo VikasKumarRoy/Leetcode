@@ -1,7 +1,7 @@
 //Problem - 322
 // https://leetcode.com/problems/coin-change/
 
-//Recursive Solution
+//Recursive Solution will give TLE
 class Solution {
 public:
     int getMinCoins(vector <int> coins, int ind, int amount) {
@@ -26,30 +26,30 @@ public:
     }
 };
 
-//Memorization(Top Down)
+//Memorization(Top Down) passes all tc
 class Solution {
 public:
-    int getMinCoins(vector <int> coins, int ind, int amount, vector <vector <int>> &dp) {
+    int getMinCoins(vector <int> coins, int ind, int amount, vector <int> &dp) {
         if(amount < 0)
             return INT_MAX;
         if(amount == 0)
             return 0;
-        if(dp[ind][amount] == -1) {
+        if(dp[amount] == -1) {
             int x = INT_MAX;
             for(int i = 0; i < coins.size(); i++) {
                 if(coins[i] <= amount)
                     x = min(x, getMinCoins(coins, i, amount - coins[i], dp));
             }
-            dp[ind][amount] = x == INT_MAX ? INT_MAX : x + 1;
+            dp[amount] = x == INT_MAX ? INT_MAX : x + 1;
         }
-        return dp[ind][amount];
+        return dp[amount];
     }
     
     
     int coinChange(vector<int>& coins, int amount) {
         if(coins.size() == 0)
             return 0;
-        vector <vector <int>> dp(coins.size(), vector <int> (amount+1, -1));
+        vector <int> dp(amount+1, -1);
         int res = getMinCoins(coins, 0, amount, dp);
         return INT_MAX == res ? -1 : res;
     }
@@ -59,22 +59,6 @@ public:
 
 class Solution {
 public:
-    int getMinCoins(vector <int> coins, int ind, int amount, vector <vector <int>> &dp) {
-        if(amount < 0)
-            return INT_MAX;
-        if(amount == 0)
-            return 0;
-        if(dp[ind][amount] == -1) {
-            int x = INT_MAX;
-            for(int i = 0; i < coins.size(); i++) {
-                if(coins[i] <= amount)
-                    x = min(x, getMinCoins(coins, i, amount - coins[i], dp));
-            }
-            dp[ind][amount] = x == INT_MAX ? INT_MAX : x + 1;
-        }
-        return dp[ind][amount];
-    }
-    
     
     int coinChange(vector<int>& coins, int amount) {
         if(coins.size() == 0)
