@@ -1,7 +1,8 @@
 //Problem  - 45
 // https://leetcode.com/problems/jump-game-ii/
 
-// O(n) greedy solution usign bfs
+// O(n) greedy solution usign bfs the no. of jumps are equal to the no. of bfs levels
+
 class Solution {
 public:
     int jump(vector<int>& nums) {
