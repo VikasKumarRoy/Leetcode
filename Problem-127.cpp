@@ -1,7 +1,7 @@
 //Problem - 127
 // https://leetcode.com/problems/word-ladder/
 
-// O(n * n * m) solution using dp with O(n * m) space
+// O(n * n * m) solution
 
 class Solution {
 public:
