@@ -50,3 +50,31 @@ public:
     }
 };
    
+// O(n) time and O(1) space solution
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n = height.size();
+        if(n <= 2)
+            return 0;
+        int ans = 0;
+        int maxL, maxR, i, j;
+        i = maxL = 0;
+        j = maxR = n-1;
+        while(i < j) {
+            if(height[maxL] < height[maxR]) {
+                i++;
+                if(height[maxL] < height[i])
+                    maxL = i;
+                ans += height[maxL] - height[i];
+            } else {
+                j--;
+                if(height[maxR] < height[j])
+                    maxR = j;
+                ans += height[maxR] - height[j];
+            }
+        }
+        return ans;
+    }
+};   
