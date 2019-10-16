@@ -13,7 +13,7 @@ public:
     
     int findCircleNum(vector<vector<int>>& M) {
         vector <int> ds(M.size(), -1);
-        int ans = M.size();
+        int ans = 0;
         for(int i = 0; i < M.size(); i++) {
             for(int j = i+1; j < M[i].size(); j++) {
                 if(M[i][j])
@@ -21,19 +21,13 @@ public:
                     int m = find(ds, i);
                     int n = find(ds, j);
                     if(m != n) {
-                        ds[i] = j;
-                        ans--;
+                        ds[m] = n;
                     }
                 }
             }
         }
-        return ans;
-        unordered_map <int, vector <int>> um;
-        for(int i = 0; i < M.size(); i++)
-            um[find(ds, i)].push_back(i);
-        return um.size();
         for(int i = 0; i < ds.size(); i++) 
-            if(ds[i] == -1) 
+            if(ds[i] == -1)
                 ans++;
         return ans;
     }
