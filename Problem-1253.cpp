@@ -8,25 +8,29 @@ class Solution {
 public:
     vector<vector<int>> reconstructMatrix(int upper, int lower, vector<int>& colsum) {
         int m = colsum.size();
-        int n = 2;
-        vector <vector<int>> ans(n, vector <int> (m, 0));
+        vector <vector<int>> ans(2, vector <int> (m, 0));
+        for(int i = 0; i < m; i++) {
+            if(colsum[i] == 2) {
+                ans[0][i] = ans[1][i] = 1;
+                colsum[i] = 0;
+                lower--;
+                upper--;
+            }
+        }
         for(int i = 0; i < m; i++) {
             if(colsum[i] > 0 && upper > 0) {
                 colsum[i]--;
                 upper--;
                 ans[0][i] = 1;
             }
-        }
-        for(int i = 0; i < m; i++) {
-            if(colsum[i] > 0 && lower > 0) {
+            else if(colsum[i] > 0 && lower > 0) {
                 colsum[i]--;
                 lower--;
                 ans[1][i] = 1;
             }
         }
-        vector <vector <int>> v;
-        if(lower != 0 || upper != 0)
-            return v;
+        if(lower != 0 || upper != 0 || accumulate(colsum.begin(), colsum.end(), 0) != 0)
+            ans.clear();
         return ans;
     }
 };
