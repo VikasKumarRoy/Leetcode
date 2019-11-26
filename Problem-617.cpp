@@ -9,10 +9,10 @@ public:
     TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
         if(!t1 && !t2)
             return NULL;
-        TreeNode *temp = new TreeNode(10);
-        temp->val = t1 ? t1->val : 0 + t2 ? t2->val : 0;
-        temp->left = mergeTrees(t1->left, t2->left);
-        temp->right = mergeTrees(t1->right, t2->right);
+        int x = (t1 ? t1->val : 0) + (t2 ? t2->val : 0);
+        TreeNode *temp = new TreeNode(x);
+        temp->left = mergeTrees(t1 ? t1->left : NULL, t2 ? t2->left : NULL);
+        temp->right = mergeTrees(t1 ? t1->right : NULL, t2 ? t2->right : NULL);
         return temp;
     }
 };
