@@ -2,7 +2,7 @@
 
 // https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/
 
-// O(moves.size())  time complexity and O(1) space complexity sol using binary search
+// O(moves.size()) time complexity and O(1) space complexity
 
 class Solution {
 public:
