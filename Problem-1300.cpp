@@ -10,17 +10,21 @@ public:
         sort(arr.begin(), arr.end());
         int mn = arr[0], mx = arr[0];
         int n = arr.size();
-        vector <int> preSum(n, 0);
-        preSum[0] = arr[0];
+        vector <int> preSum(n+1, 0);
         int ans = 0;
-        for(int i = 1; i < n; i++) {
-            preSum[i] = presum[i-1] + arr[i];
-            mn = min(mn, arr[i]);
-            mx = max(mx, arr[i]);
+        for(int i = 1; i < n+1; i++) {
+            preSum[i] = preSum[i-1] + arr[i-1];
+            mn = min(mn, arr[i-1]);
+            mx = max(mx, arr[i-1]);
         }
-        for(int i = mn, i <= mx; i++) {
+        int sum = 0, diff = INT_MAX;
+        for(int i = 0; i <= mx; i++) {
             auto pos = lower_bound(arr.begin(), arr.end(), i);
-            
+            sum = (arr.end()-pos)*i + preSum[pos-arr.begin()];
+            if(abs(sum-target) < diff) {
+                diff = abs(sum-target);
+                ans = i;
+            }
         }
         return ans;
     }
