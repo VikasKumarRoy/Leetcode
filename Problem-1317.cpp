@@ -4,7 +4,7 @@
 
 // O(nlog10n) time complexity and O(1) space complexity solution
 
-class Solution {
+cclass Solution {
 public:
     vector<int> getNoZeroIntegers(int n) {
         string s1, s2;
@@ -12,7 +12,7 @@ public:
             int j = n - i;
             s1 = to_string(i);
             s2 = to_string(j);
-            if (s1.find('0') == s1.end() && s2.find('0') == s2.end())
+            if(s1.find('0') == string::npos && s2.find('0') == string::npos)
                 return {i, j};
         }
     return {};
