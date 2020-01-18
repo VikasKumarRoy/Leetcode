@@ -12,6 +12,10 @@ public:
             if(nums[i] < nums[i-1]) {
                 if(flag)
                     return 0;
+                if(i == 1 || nums[i] >= nums[i-2])
+                    nums[i-1] = nums[i];
+                else
+                    nums[i] = nums[i-1];
                 flag = 1;
             }
         }
