@@ -7,9 +7,7 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        unordered_set <int> s1, s2;
-        for(int val : nums1)
-            s1.insert(val);
+        unordered_set <int> s1(nums1.begin(), nums1.end()), s2;
         for(int val : nums2) {
             if(s1.count(val))
                 s2.insert(val);
