@@ -12,10 +12,10 @@ public:
     vector<string> findWords(vector<string>& words) {
         vector <string> ans;
         for(int i = 0; i < words.size(); i++) {
-            int m = map[words[i][0] - 'a'];
+            int m = map[tolower(words[i][0]) - 'a'];
             int flag = 1;
-            for(int j = 1; j < words[i].size(); j++)
-                if(map[words[i][j] - 'a'] != m) {
+            for(int j = 1; j < words[i].length(); j++)
+                if(map[tolower(words[i][j]) - 'a'] != m) {
                     flag = 0;
                     break;
                 }
