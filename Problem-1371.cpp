@@ -6,30 +6,21 @@
 
 class Solution {
 public:
-    string sortString(string s) {
-        int n = s.length();
-        string res = "";
-        map <char, int> m;
-        for(char c : s)
-            m[c]++;
-        while(1) {
-            for(auto it = m.begin(); it != m.end(); it++) {
-                if(it->second > 0) {
-                    res += it->first;
-                    it->second--;
-                }
-                if(res.length() == n)
-                    return res;
-            }
-            for(auto it = m.rbegin(); it != m.rend(); it++) {
-                if(it->second > 0) {
-                    res += it->first;
-                    it->second--;
-                }
-                if(res.length() == n)
-                    return res;
-            }
+    int findTheLongestSubstring(string s) {
+        int mask = 0, ans = 0;
+        unordered_map <int, int> um;
+        um[0] = -1;
+        string vowel = "aeiou";
+        for(int i = 0; i < s.length(); i++) {
+            int pos = vowel.find(s[i]);
+            if(pos != -1)
+                mask ^= 1 << pos;
+            if(um[mask])
+                ans = max(ans, i-um[mask]);
+            else
+                um[mask] = i;
         }
-        return res;
+        return ans;
     }
 };
+
