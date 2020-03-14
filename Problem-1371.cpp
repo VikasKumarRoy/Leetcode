@@ -6,6 +6,7 @@
 
 class Solution {
 public:
+ 
     int findTheLongestSubstring(string s) {
         int mask = 0, ans = 0;
         unordered_map <int, int> um;
@@ -15,10 +16,9 @@ public:
             int pos = vowel.find(s[i]);
             if(pos != -1)
                 mask ^= 1 << pos;
-            if(um[mask])
-                ans = max(ans, i-um[mask]);
-            else
+            if(!um.count(mask))
                 um[mask] = i;
+            ans = max(ans, i-um[mask]);
         }
         return ans;
     }
