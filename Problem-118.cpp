@@ -10,10 +10,7 @@ public:
         vector <vector <int>> v;
         if(numRows == 0)
             return v;
-        if(numRows == 1) {
-            v.push_back({1});
-            return v;
-        }
+        v.push_back({1});
         for(int i = 2; i <= numRows; i++) {
             vector <int> arr(i, 1);
             for(int j = 1; j < i-1; j++)
