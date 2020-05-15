@@ -2,8 +2,8 @@
 
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 
-// Search- O(m) time complexity and O(1) space complexity solution where m is key length
-// Insert- O(m) time complexity and O(m) space complexity solution 
+// Search- O(m) time complexity and O(1) space complexity or O(mlogn) time if balanced
+// Insert- O(m) time complexity and O(m) space complexity where m is the key length
 
 struct Node {
     Node *children[26];
@@ -60,5 +60,3 @@ public:
         return true;
     }
 };
-
- 
