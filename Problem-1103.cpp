@@ -1,6 +1,8 @@
-//Problem  - 1103
+// Problem - 1103
+
 // https://leetcode.com/problems/distribute-candies-to-people/
 
+// O(n) time complexity and O(n) space solution
 
 class Solution {
 public:
