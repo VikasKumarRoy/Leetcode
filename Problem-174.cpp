@@ -1,7 +1,8 @@
-//Problem - 174
+// Problem - 174
+
 // https://leetcode.com/problems/dungeon-game/
 
-// O(n * m) solution using dp passes all tc
+// O(n * m) time and space solution using dp passes all tc
 
 class Solution {
 public:
@@ -18,5 +19,4 @@ public:
         return dp[0][0];
     }
 };
-
-   
+ 
