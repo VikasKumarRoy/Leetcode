@@ -1,8 +1,8 @@
-//Problem  - 1137
+// Problem  - 1137
+
 // https://leetcode.com/problems/n-th-tribonacci-number/
 
-
-// O(n) solution using dp passes all tc
+// O(n) time complexity and O(n) space solution using dp
 
 class Solution {
 public:
