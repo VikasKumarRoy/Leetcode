@@ -11,9 +11,8 @@ public:
             return "";
         stringstream ss(s);
         string word, ans;
-        while(ss >> word) {
+        while(ss >> word)
             ans = word + " " + ans;
-        }
         return ans.substr(0,ans.length()-1);
     }
 };
