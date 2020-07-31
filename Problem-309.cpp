@@ -5,6 +5,7 @@
 // O(n) time complexity and O(1) space complexity solution using dp
 
 class Solution {
+    
 public:
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
