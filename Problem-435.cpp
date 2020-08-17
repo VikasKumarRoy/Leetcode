@@ -2,31 +2,27 @@
 
 // https://leetcode.com/problems/non-overlapping-intervals/
 
-// O(n) time complexity and O(n) space complexity solution
+// O(nlogn) time complexity and O(1) space complexity solution
 
 class Solution {
 public:
+    static bool mysort(const vector<int> &a, const vector <int> &b) {
+        return a[0] < b[0];
+    }
     
-    TreeNode* bstFromPreorder(vector<int>& preorder) {
-        int n = preorder.size();
-        stack <TreeNode*> s;
-        TreeNode* root = new TreeNode(preorder[0]);
-        s.push(root);
-        for(int i = 1; i < n; i++) {
-            if(preorder[i] < s.top()->val) {
-                s.top()->left = new TreeNode(preorder[i]);
-                s.push(s.top()->left);
+    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+        int ans = 0;
+        sort(intervals.begin(), intervals.end(), mysort);
+        int end = INT_MIN;
+        for(int i = 0; i < intervals.size(); i++) {
+            if(intervals[i][0] < end) {
+                ans++;
+                end = min(end, intervals[i][1]);
             }
             else {
-                TreeNode* temp = NULL;
-                while(!s.empty() && s.top()->val < preorder[i]) {
-                    temp = s.top();
-                    s.pop();
-                }
-                temp->right = new TreeNode(preorder[i]);
-                s.push(temp->right);
+                end = intervals[i][1];
             }
         }
-        return root;
+        return ans;
     }
 };
