@@ -1,7 +1,8 @@
-//Problem - 450
+// Problem - 450
+
 // https://leetcode.com/problems/delete-node-in-a-bst/
 
-// Passes all test cases O(h) complexity but worst case can go upto O(n)
+// O(h) time complexity but worst case can go upto O(n)
 
 class Solution {
 public:
@@ -37,4 +38,3 @@ public:
         return root;
     }
 };
-   
