@@ -1,0 +1,32 @@
+// Problem - 290
+
+// https://leetcode.com/problems/word-pattern/
+
+// O(n) time complexity and O(n) space complexity solution
+
+class Solution {
+public:
+    bool wordPattern(string pattern, string str) {
+        stringstream ss(str);
+        string word;
+        unordered_map <char, string> um;
+        unordered_map <string, char> um2;
+        int i = 0;
+        while(ss >> word) {
+            if(i >= pattern.length())
+                return false;
+            if(um.count(pattern[i])) {
+                if(um[pattern[i]] != word)
+                    return false;
+            }
+            if(um2.count(word)) {
+                if(um2[word] != pattern[i])
+                    return false;
+            }
+            um[pattern[i]] = word;
+            um2[word] = pattern[i];
+            i++;
+        }
+        return i == pattern.length();
+    }
+};
