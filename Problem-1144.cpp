@@ -1,4 +1,7 @@
-//Problem  - 1144
+// Problem  - 1144
+
+// O(n) time complexity and O(1) space solution
+
 // https://leetcode.com/problems/decrease-elements-to-make-array-zigzag/
 
 class Solution {
@@ -21,7 +24,6 @@ public:
             else if(i+1 >= nums.size() && nums[i] >= nums[i-1])
                 b += nums[i] - nums[i-1] + 1;
     } 
-        cout<<a<<b;
         return min(a, b);
     }
 };
