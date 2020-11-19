@@ -1,8 +1,8 @@
-// Problem - 1007
+// Problem - 117
 
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 
-// O(n) time complexity and O(n) space complexity solution
+// O(n) time complexity and O(n) space complexity solution using dfs
 
 class Solution {
 public:
@@ -46,6 +46,44 @@ public:
         }
         connect(root->right);
         connect(root->left);
+        return root;
+    }
+};
+
+// OR O(n) time complexity and O(1) space complexity solution
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if(!root)
+            return root;
+        Node* curr = root, *nextLevelHead = NULL, *prev = NULL;
+        while(curr) {
+            while(curr) {
+                if(curr->left) {
+                    if(!prev) {
+                        nextLevelHead = curr->left;
+                    }
+                    else {
+                        prev->next = curr->left;  
+                    }
+                    prev = curr->left;
+                }
+                if(curr->right) {
+                    if(!prev) {
+                        nextLevelHead = curr->right;
+                    }
+                    else {
+                        prev->next = curr->right;
+                    }
+                    prev = curr->right;
+                }
+                curr = curr->next;
+            }
+            curr = nextLevelHead;
+            nextLevelHead = NULL;
+            prev = NULL;
+        }
         return root;
     }
 };
