@@ -12,9 +12,8 @@ public:
         }
         pair <int, int> lv = robUtil(root->left);
         pair <int, int> rv = robUtil(root->right);
-        int mx = max({root->val+lv.second+rv.second, lv.first+rv.first});
-        cout << mx << " " << max(lv.first, rv.first) << endl;
-        return {mx, max(lv.first, rv.first)};
+        int mx = max(root->val+lv.second+rv.second, lv.first+rv.first);
+        return {mx, lv.first + rv.first};
     }
     
     int rob(TreeNode* root) {
