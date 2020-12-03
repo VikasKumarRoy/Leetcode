@@ -30,3 +30,29 @@ public:
         return dp[n][total];
     }
 };
+
+// OR DFS solution
+
+class Solution {
+public:
+    
+    bool dfs(vector <int>& nums, int target, int ind) {
+        if(ind >= nums.size() || nums[ind] > target)
+            return false;
+        if(nums[ind] == target)
+            return true;
+        return dfs(nums, target-nums[ind], ind+1) || dfs(nums, target, ind+1);
+    }
+    
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+        int total = 0;
+        for(int val : nums) {
+            total += val;
+        }
+        if(total&1)
+            return false;
+        sort(nums.begin(), nums.end(), greater <int>());
+        return dfs(nums, total/2, 0);
+    }
+};
