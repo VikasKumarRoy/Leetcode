@@ -31,4 +31,35 @@ public:
     }
 };
 
+// By using int to store index of visited and using memorization
+
+class Solution {
+public:
+    int ans = 0;
+    
+    int dfs(int ind, int n, vector <vector <int>>& mem, int used) {
+        if(ind > n) {
+            ans++;
+            return 1;
+        }
+        if(mem[ind][used] != -1)
+            return mem[ind][used];
+        int ctr = 0;
+        for(int i = 1; i <= n; i++) {
+            if(((used >> i) & 1) == 0) {
+                if(i % ind == 0 || ind % i == 0) {
+                    ctr += dfs(ind+1, n, mem, used | (1 << i));
+                }
+            }
+        }
+        mem[ind][used] = ctr;
+        return mem[ind][used];
+    }
+    
+    int countArrangement(int n) {
+        vector <vector <int>> mem(n+1, vector <int> (1 << (n+1), -1));
+        return dfs(1, n, mem, 0);
+        return ans;
+    }
+};
 
