@@ -1,8 +1,8 @@
-//Problem  - 23
+// Problem  - 23
+
 // https://leetcode.com/problems/merge-k-sorted-lists/
 
-
-// O(nlogk) solution passes all tc
+// O(nlogk) time complexity and O(k) solution
 
 class Solution {
 public:
