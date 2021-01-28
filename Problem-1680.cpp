@@ -6,7 +6,18 @@
 
 class Solution {
 public:
+    const int mod = 1e9+7;
+    
     int concatenatedBinary(int n) {
-        
+        long long ans = 0;
+        for (int i = 1; i <= n; ++i) {
+            int x = i, len = 0;
+            while (x > 0) {
+                ++len;
+                x /= 2;
+            }
+            ans = (ans << len) % mod + i;
+        }
+        return ans % mod;
     }
 };
