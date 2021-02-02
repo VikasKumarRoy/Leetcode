@@ -44,3 +44,37 @@ public:
 
 // OR O(n) time complexity by filling even postion first
 
+class Solution {
+public:
+    string reorganizeString(string S) {
+        unordered_map <char, int> um;
+        char maxChar = S[0];
+        int n = S.length();
+        for(char c : S) {
+            um[c]++;
+            if(um[c] > um[maxChar])
+                maxChar = c;
+        }
+        if(um[maxChar] > (n+1)/2)
+            return "";
+        string ans(n, 'x');
+        int ind = 0;
+        while(um[maxChar] >= 1) {
+            ans[ind] = maxChar;
+            um[maxChar]--;
+            ind = ind+2;
+        }
+        if(ind >= n)
+            ind = 1;
+        for(auto it : um) {
+            char c = it.first;
+            while(um[c]--) {
+                ans[ind] = c;
+                ind = ind < n-2 ? ind + 2 : 1;
+            }
+        }
+        return ans;
+    }
+};
+
+
