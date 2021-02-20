@@ -8,32 +8,23 @@ class Solution {
 public:
     bool canChoose(vector<vector<int>>& groups, vector<int>& nums) {
         int n = nums.size();
-        int i = 0, valid = 0, k = 0;
-        while(i < groups.size() && k < n) {
+        int i = 0, numIndex = 0;
+        while(i < groups.size() && numIndex < n) {
             int j = 0;
             int ctr = 0;
             int sz = groups[i].size();
-            int temp = k;
-            while(k < n && j < sz) {
-                if(groups[i][j] == nums[k]) {
-                    ctr++;
-                    j++, k++;
-                }
-                else {
-                    j = 0;
-                    ctr = 0;
-                    k = temp+1;
-                }
+            int k = numIndex;
+            while(k < n && j < sz && nums[k] == groups[i][j]) {
+                ctr++, j++, k++;
             }
             if(ctr == sz) {
-                valid++;
-                k += ctr;
+                i++;
+                numIndex += ctr;
             }
-            
-            i++;
+            else {
+                numIndex++;
+            }
         }
-        if(i == groups.size())
-            return true;
-        return false;
+        return i == groups.size();
     }
 };
