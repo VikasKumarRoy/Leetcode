@@ -1,8 +1,8 @@
-// Problem - 1007
+// Problem - 575
 
-// https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
+// https://leetcode.com/problems/distribute-candies/
 
-// O(n) time complexity and O(1) space complexity solution
+// O(n) time complexity and O(n) space complexity solution
 
 class Solution {
 public:
