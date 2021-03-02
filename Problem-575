@@ -1,0 +1,13 @@
+// Problem - 1007
+
+// https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
+
+// O(n) time complexity and O(1) space complexity solution
+
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        unordered_set <int> us(candyType.begin(), candyType.end());
+        return min(us.size(), candyType.size()/2);
+    }
+};
