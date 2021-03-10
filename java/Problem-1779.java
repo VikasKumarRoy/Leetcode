@@ -15,7 +15,6 @@ class Solution {
         for(int i = 0; i < n; i++) {
             if(points[i][0] == x || points[i][1] == y) {
                 int d = distance(points[i][0], points[i][1], x, y);
-                // System.out.println(d);
                 if(d < min) {
                     ind = i;
                     min = d;
